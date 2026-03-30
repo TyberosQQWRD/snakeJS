@@ -56,7 +56,7 @@ function generateApple() {
         clearConsole();
         console.log('Поздравляем! Вы заполнили всё поле!');
         console.log(`Финальный счет: ${score}`);
-        console.log('\nНажмите R для перезапуска или Ctrl+C для выхода');
+        console.log('\nНажмите R для перезапуска или Q для выхода');
         return false;
     }
     
@@ -201,7 +201,7 @@ function moveSnake() {
         clearConsole();
         console.log('Игра окончена!');
         console.log(`Счет: ${score}`);
-        console.log('\nНажмите R для перезапуска или Ctrl+C для выхода');
+        console.log('\nНажмите R для перезапуска или Q для выхода');
         return false;
     }
     
@@ -254,7 +254,7 @@ function renderGame() {
     
     // выводим нижнюю границу
     console.log('─'.repeat(FIELD_SIZE * 2 + 3));
-    console.log('\nУправление: ↑ ↓ ← → | R - перезапуск | Ctrl+C - выход');
+    console.log('\nУправление: ↑ ↓ ← → | R - перезапуск | Q - выход');
 }
 
 // основной игровой цикл
@@ -331,12 +331,9 @@ process.stdin.on('keypress', (str, key) => {
         case 'r':
             restartGame();
             break;
-        case 'c':
-            if (key.ctrl) {
-                console.log('\nИгра завершена');
-                process.exit();
-            }
-            break;
+        case 'q':             
+            console.log('\nИгра завершена');
+            process.exit();
     }
 });
 
