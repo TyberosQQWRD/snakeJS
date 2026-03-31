@@ -1,5 +1,4 @@
 {
     "gameSpeed": 100,
-    "gridSize": 20,
-    "snakeColor": "green"
+    "gridSize": 20
 }
