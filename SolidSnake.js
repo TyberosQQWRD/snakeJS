@@ -31,7 +31,7 @@ function checkWallCollision(head) {
     return head.X < 0 || head.X >= data.gridSize || head.Y < 0 || head.Y >= data.gridSize;
 }
 // проверка столкновения с собой или препятствиями
-export function checkCollision(head) {
+function checkCollision(head) {
     // проверка на столкновение с телом (исключаем голову при движении)
     if (snake.some((segment, index) => index > 0 && segment.X === head.X && segment.Y === head.Y)) {
         return true;
@@ -44,7 +44,7 @@ export function checkCollision(head) {
 }
 
 // генерация препятствий
-export function generateObstacles(count) {
+function generateObstacles(count) {
     const newObstacles = [];
     let generated = 0;
     let attempts = 0;
@@ -64,10 +64,10 @@ export function generateObstacles(count) {
 }
 
 // добавление новых препятствий
-export function addObstacles() {
+function addObstacles() {
     const currentObstacleCount = obstacles.length;
-    const newObstacleCount = Math.floor(applesEaten / 5);
     // когда съедается пятое яблоко, добавляем еще одно препятствие
+    const newObstacleCount = Math.floor(applesEaten / data.obstacleCreationInterval);
     if (newObstacleCount > currentObstacleCount) {
         const obstaclesToAdd = newObstacleCount - currentObstacleCount;
         const newObstacles = generateObstacles(obstaclesToAdd);
@@ -76,7 +76,7 @@ export function addObstacles() {
 }
 
 // проверка, занята ли позиция змеей или препятствиями
-export function isPositionOccupied(x, y, includeSnake = true) {
+function isPositionOccupied(x, y, includeSnake = true) {
     if (includeSnake && snake.some(segment => segment.X === x && segment.Y === y)) {
         return true;
     }
@@ -87,7 +87,7 @@ export function isPositionOccupied(x, y, includeSnake = true) {
 }
 
 // генерация яблочек
-export function generateApple() {
+function generateApple() {
     if (snake.length + obstacles.length >= data.gridSize * data.gridSize) {
         gameRunning = false;
         clearConsole();
