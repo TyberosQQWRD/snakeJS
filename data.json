@@ -1,4 +1,5 @@
 {
     "gameSpeed": 100,
-    "gridSize": 20
+    "gridSize": 20,
+    "obstacleCreationInterval": 5
 }
