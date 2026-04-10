@@ -296,13 +296,6 @@ function restartGame() {
 
 // обработка ввода с клавиатуры
 process.stdin.on('keypress', (str, key) => {
-    if (!gameRunning) {
-        if (key.name === 'r') {
-            restartGame();
-        }
-        return;
-    }
-    
     switch (key.name) {
         case 'up':
             nextDirection = 'UP';
@@ -328,9 +321,3 @@ process.stdin.on('keypress', (str, key) => {
 // запускаем игру
 console.log('Змейка загружается...');
 startGame();
-
-// обработка выхода
-process.on('SIGINT', () => {
-    console.log('\nИгра завершена');
-    process.exit();
-});
